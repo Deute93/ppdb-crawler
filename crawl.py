@@ -27,9 +27,9 @@ def getDnaLine(dnaStr,driver):
         # for iframe in iframes:
         #    print(iframe.get_attribute('name'))
         driver.switch_to.frame(iframes[0])
-        # id가 fvtti0 tag를 10초 내에 검색, 그렇지 않으면 timeoutexception 발생
+        # id가 locus tag를 10초 내에 검색, 그렇지 않으면 timeoutexception 발생
         element = WebDriverWait(driver, 10).until(
-            # By.ID 는 ID로 검색, By.CSS_SELECTOR 는 CSS Selector 로 검색
+            # By.ID 는 fvtti0 ID로 검색, By.CSS_SELECTOR 는 CSS Selector 로 검색
             EC.presence_of_element_located((By.ID, "fvtti0"))
         )
         str = driver.page_source
@@ -45,7 +45,7 @@ def getDnaLine(dnaStr,driver):
             else:
                 iter = iter+1
     except TimeoutException:
-        print("해당 페이지에 cMain 을 ID 로 가진 태그가 존재하지 않거나, 해당 페이지가 10초 안에 열리지 않았습니다.")
+        print("해당 페이지에 locus tag 을 ID 로 가진 태그가 존재하지 않거나, 해당 페이지가 10초 안에 열리지 않았습니다.")
 
     finally:
         return targetStr[:1000]
